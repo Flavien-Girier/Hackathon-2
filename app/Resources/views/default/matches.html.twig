@@ -1,0 +1,180 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+
+    <header>
+        <h1 class="logo-dare">DARE !</h1>
+    </header>
+
+{% endblock %}
+
+{% block body %}
+    <div class="bg01">
+        <div class="container ">
+            <div class="row ligne1 no-gutters">
+                <div class="col-md-5 text-center choices-card p-0 m-3">
+                    <div class="card bg-grey-choices ">
+                        <div class="card-header">
+                            <h5>{{ character.name }}</h5>
+                        </div>
+                        <div class="card-body">
+                            <img class="imgSeize" src="{{ character.image }}" alt="Card image cap">
+                            <li class="list-group-item p-1 frontSeizeCard text-left bg-grey-choices ">
+                                {% if character.height is defined %}
+                                    Height: {{ character.height }} m <br>
+                                {% endif %}
+
+                                {% if character.mass is defined %}
+                                    Mass: {{ character.mass }} Kg <br>
+                                {% endif %}
+
+                                {% if character.gender is defined %}
+                                    Gender: {{ character.gender }}  <br>
+                                {% endif %}
+
+                                {% if character.hairColor is defined %}
+                                    Hair color: {{ character.hairColor }}  <br>
+                                {% endif %}
+
+                                {% if character.eyeColor is defined %}
+                                    Eye color: {{ character.eyeColor }}  <br>
+                                {% endif %}
+
+                                {% if character.homeworld is defined %}
+                                    Homeworld: {{ character.homeworld }} <br>
+                                {% endif %}
+
+                                {% if character.bornLocation is defined %}
+                                    Born location: {{ character.bornLocation }} <br>
+                                {% endif %}
+
+                                {% if character.species is defined %}
+                                    species: {{ character.species }} <br>
+                                {% endif %}
+
+                                {% if character.affiliations is defined %}
+                                    Affiliations: {{ affiliations }} <br>
+                                {% endif %}
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                <!--
+                <div class="card" style="width: 22rem;">
+                    <div class="card-body p-1 frontSeizeCard">
+                        {% if character.name is defined %}
+                            {{ character.name }} <br>
+                        {% endif %}
+                    </div>
+                    {% if character.image is defined %}
+                        <img class="card-img-top imgSeize" src="{{ character.image }}" alt="Card image cap">
+                    {% endif %}
+                    <ul class="list-group list-group-flush ">
+                        <li class="list-group-item p-1 frontSeizeCard text-left">
+                            {% if character.height is defined %}
+                                Height: {{ character.height }} m <br>
+                            {% endif %}
+
+                            {% if character.mass is defined %}
+                                Mass: {{ character.mass }} Kg <br>
+                            {% endif %}
+
+                            {% if character.gender is defined %}
+                                Gender: {{ character.gender }}  <br>
+                            {% endif %}
+
+                            {% if character.hairColor is defined %}
+                                Hair color: {{ character.hairColor }}  <br>
+                            {% endif %}
+
+                            {% if character.eyeColor is defined %}
+                                Eye color: {{ character.eyeColor }}  <br>
+                            {% endif %}
+
+                            {% if character.homeworld is defined %}
+                                Homeworld: {{ character.homeworld }} <br>
+                            {% endif %}
+
+                            {% if character.bornLocation is defined %}
+                                Born location: {{ character.bornLocation }} <br>
+                            {% endif %}
+
+                            {% if character.species is defined %}
+                                species: {{ character.species }} <br>
+                            {% endif %}
+
+                            {% if character.affiliations is defined %}
+                                Affiliations: {{ affiliations }} <br>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--
+        <div class="row ligne1 no-gutters">
+            <div class="col-md-6 text-center pt-6">
+                {% if character.image is defined %}
+                    <img src="{{ character.image }}" class="img-fluidmax img-fluid img-thumbnail">
+                {% endif %}
+            </div>
+            <div class="col-md-6">
+                <p class="text-white pt-6">
+                    {% if character.name is defined %}
+                        Name: {{ character.name }} <br>
+                    {% endif %}
+
+                    {% if character.height is defined %}
+                        Height: {{ character.height }} m <br>
+                    {% endif %}
+
+                    {% if character.mass is defined %}
+                        Mass: {{ character.mass }} Kg <br>
+                    {% endif %}
+
+                    {% if character.gender is defined %}
+                        Gender: {{ character.gender }}  <br>
+                    {% endif %}
+
+                    {% if character.hairColor is defined %}
+                        Hair color: {{ character.hairColor }}  <br>
+                    {% endif %}
+
+                    {% if character.eyeColor is defined %}
+                        Eye color: {{ character.eyeColor }}  <br>
+                    {% endif %}
+
+                    {% if character.homeworld is defined %}
+                        Homeworld: {{ character.homeworld }} <br>
+                    {% endif %}
+
+                    {% if character.bornLocation is defined %}
+                        Born location: {{ character.bornLocation }} <br>
+                    {% endif %}
+
+                    {% if character.species is defined %}
+                        species: {{ character.species }} <br>
+                    {% endif %}
+
+                    {% if character.affiliations is defined %}
+                        Affiliations: {{ affiliations }} <br>
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+
+
+        <div class="col-md-6 offset-md-3">
+            <div class="input-group my-auto">
+                <div class="form-control">Salut ça va?</div>
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary text-white" type="button">OUI !!!</button>
+                    <button class="btn btn-outline-secondary text-white" type="button">NON !</button>
+                </div>
+            </div>
+        </div>
+    </div>-->
+{% endblock %}

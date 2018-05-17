@@ -1,0 +1,622 @@
+/* CSS Header */
+.logo-dare{
+    position: absolute;
+    margin-left: 10px;
+    color: black;
+    text-shadow: #FFFF00 1px 1px, #FFFF00 -1px 1px, #FFFF00 -1px -1px, #FFFF00 1px -1px;
+}
+
+/* Fin CSS Header */
+
+/*CSS Page Index*/
+/* NAV BAR JEDI */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+* {
+    box-sizing: border-box;
+}
+
+a:hover{
+    color: black;
+    text-decoration: none;
+}
+
+#container {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#burger {
+    cursor: pointer;
+    opacity: 0;
+    animation: fadein 0.2s ease 1s forwards;
+    overflow: hidden;
+    width: 20%;
+    height: 20%;
+}
+#burger .filling, #burger .bun {
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    height: 10%;
+    width: 70%;
+    transform-origin: 50% 50%;
+    transition: top 0.4s ease 0.4s, transform 0.4s ease 0.4s;
+
+}
+#burger .filling:before, #burger .bun:before, #burger .filling:after, #burger .bun:after {
+    content: "";
+    display: block;
+    height: 40%;
+    background: white;
+    position: absolute;
+    top: 50%;
+    transform: translate(0%, -45%);
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+#burger .bun:before{
+    box-shadow: #F00 0px 0px 10px 1px;
+}
+#burger .filling:before{
+    box-shadow: #0F0 0px 0px 10px 1px;
+}
+#burger .bun.bottom:before{
+    box-shadow: #0FF 0px 0px 10px 1px;
+}
+#burger .filling:before, #burger .bun:before {
+    left: 0;
+    width: calc(-1px + 75%);
+    border-radius: 10px 0px 0px 10px;
+}
+#burger .filling:after, #burger .bun:after {
+    right: 0;
+    width: calc(-1px + 25%);
+}
+#burger:hover .bun.top:before {
+    background: #FEE;
+    box-shadow: #F00 0px 0px 10px 1px;
+}
+#burger:hover .bun.bottom:before {
+    background: #DFF;
+    box-shadow: #0FF 0px 0px 10px 1px;
+}
+#burger:hover .filling:before {
+    background: #EFE;
+    box-shadow: #0F0 0px 0px 10px 1px;
+}
+#burger .bun.top {
+    top: 25%;
+}
+#burger .bun.bottom {
+    top: 75%;
+}
+#burger .filling {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(180deg);
+    animation: green-ls-out 0.8s ease forwards;
+}
+#burger.active .bun {
+    border-radius: 3px;
+    top: 50%;
+    transition: top 0.4s ease, transform 0.4s ease;
+}
+#burger.active .bun.top {
+    transform: translate(-50%, -50%) rotate(-225deg);
+}
+#burger.active .bun.bottom {
+    transform: translate(-50%, -50%) rotate(405deg);
+}
+#burger.active .filling {
+    transform: translate(-50%, -50%) rotate(-90deg);
+    animation: green-ls-in 0.8s ease forwards;
+}
+
+nav {
+    font-family: Open Sans;
+    color: white;
+    position: fixed;
+    transform: translatex(-100%);
+    transition: transform 0.2s ease;
+    top: 260px;
+    bottom: 0px;
+    padding-right: 16px;
+    width: 250px;
+    height: 220px;
+}
+nav.show {
+    transform: translatex(220%);
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+nav ul li {
+    background: #ecfcff;
+    box-shadow: #4df 0px 0px 0px 2px;
+    font-size: 1.75em;
+    line-height: 1.25em;
+    padding: 0px;
+    padding-left: 0px;
+    margin: 16px 0px;
+    width: 0;
+    border-radius: 0px 100px 100px 0px;
+    transition: width 0.2s ease, padding 0.2s ease, color 0.2s ease, text-shadow 0.2s ease;
+}
+nav ul li:hover {
+    box-shadow: #4df 0px 0px 20px 2px;
+    text-shadow: #4df 0px 0px 6px, #4df 0px 0px 10px;
+}
+nav ul li:hover {
+    width: 115%;
+    padding: 0px 16px 0px 0px;
+    color: black;
+}
+nav ul li a {
+    display: block;
+    text-decoration: none;
+    width: 300px;
+    color: inherit;
+    padding-left: 16px;
+}
+nav ul li.green {
+    background: #e6ffe6;
+    box-shadow: #0F0 0px 0px 0px 2px;
+}
+nav ul li.green:hover {
+    box-shadow: #0F0 0px 0px 20px 2px;
+    text-shadow: #0F0 0px 0px 6px, #0F0 0px 0px 10px;
+}
+nav ul li.red {
+    background: #ffe6e6;
+    box-shadow: #F00 0px 0px 0px 2px;
+}
+nav ul li.red:hover {
+    box-shadow: #F00 0px 0px 20px 2px;
+    text-shadow: #F00 0px 0px 6px, #F00 0px 0px 10px;
+}
+nav ul li.purple {
+    background: #fae6fa;
+    box-shadow: #c0c 0px 0px 0px 2px;
+}
+nav ul li.purple:hover {
+    box-shadow: #c0c 0px 0px 20px 2px;
+    text-shadow: #c0c 0px 0px 6px, #c0c 0px 0px 10px;
+}
+nav ul li.yellow {
+    background: #ffffe6;
+    box-shadow: #FF0 0px 0px 0px 2px;
+}
+nav ul li.yellow:hover {
+    box-shadow: #FF0 0px 0px 20px 2px;
+    text-shadow: #FF0 0px 0px 6px, #FF0 0px 0px 10px;
+}
+
+@keyframes green-ls-in {
+    0% {
+        transform: translate(-50%, -50%) rotate(180deg);
+    }
+    50% {
+        transform: translate(-50%, -50%) rotate(-90deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(-90deg) translate(200%, 0%);
+    }
+}
+@keyframes green-ls-out {
+    0% {
+        transform: translate(-50%, -200%) rotate(-90deg);
+    }
+    50% {
+        transform: translate(-50%, -50%) rotate(-90deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(180deg);
+    }
+}
+@keyframes fadein {
+    from {
+        Opacity: 0;
+    }
+    to {
+        Opacity: 1;
+    }
+}
+
+
+/* Background */
+
+html {
+    width: 100%;
+    overflow-x: hidden;
+}
+body {
+    width: 100%;
+}
+p {
+    margin: 0 0 20px 0;
+}
+p, ul {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size-adjust:0.488;
+    font-weight:200;
+    font-style:normal;
+}
+img {
+    border: 0;
+    width: 100%;
+}
+h1, #pixels {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size-adjust:0.40;
+    font-weight:700;
+    font-style:normal;
+}
+h2 {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size-adjust:0.531;
+    font-weight:800;
+    font-style:normal;
+    font-size:45px;
+    line-height: 52px;
+}
+#header h1, #pixels {
+    color: #48941A;
+}
+.float-left {
+    float: left;
+    margin: 0 0 0 0px;
+}
+.float-right {
+    float: right;
+    margin: 0 0px 0 0;
+}
+.center {
+    font-size: 2.5em;
+    padding: 80px 0 0 0;
+    text-align: center;
+}
+#nav {
+    list-style: none;
+    position: fixed;
+    right: 20px;
+}
+#nav li {
+    margin: 0 0 15px 0;
+}
+#header, #intro, #second {
+    width: 100%;
+}
+#intro {
+    background:url(https://i2.wp.com/thefreshimages.com/wp-content/uploads/2018/02/Tie-Fighter-Star-Wars-Background-for-Desktop.jpg?resize=1280%2C642&ssl=1) 50% 0 no-repeat fixed;
+    background-size: cover;
+    color: white;
+    height: 600px;
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+}
+#second {
+    background: url(https://raw.githubusercontent.com/solodev/star-wars-the-last-parallax/master/images/star-wars-parallax-2.jpg) 50% 0 no-repeat fixed;
+    background-size: cover;
+    color: white;
+    height: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0;
+    width: 100%;
+}
+#second .bg {
+    background: url(https://raw.githubusercontent.com/solodev/star-wars-the-last-parallax/master/images/star-wars-parallax-overlay.png) 50% 500px no-repeat fixed;
+    height: 800px;
+    margin: 0 auto;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    z-index: 200;
+    max-width: 1900px;
+    width: 100%;
+    overflow: hidden;
+}
+#third {
+    background: url(https://images.alphacoders.com/107/thumb-1920-107763.jpg) 50% 0 no-repeat fixed;
+    background-size: cover;
+    color: black;
+    height: 650px;
+    padding: 100px 0 0 0;
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+    color: #fff;
+}
+#fourth {
+    background: url(https://images.alphacoders.com/107/thumb-1920-107763.jpg) 50% 0 no-repeat fixed;
+    background-size: cover;
+    color: black;
+    height: 850px;
+    padding: 100px 0 0 0;
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+    color: #fff;
+}
+#fifth {
+    background: #ccc;
+    height: 400px;
+    margin: 0 auto;
+    padding: 40px 0 0 0;
+}
+.story {
+    margin: 0 auto;
+    max-width: 1170px;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+.story .float-left, .story .float-right {
+    padding: 100px 0 0 0;
+    position: relative;
+    width: 350px;
+    min-width: 480px;
+    width: 33%;
+    background: rgba(0,0,0,0.75);
+    height: 80%;
+    padding: 5% 50px;
+    z-index: 300;
+}
+/* Fin CSS Page Index*/
+
+/* Début de Feuille de style Matches */
+
+/*[class*="col"]
+{
+    border: 2px solid blue;
+    border-radius: 6px;
+    line-height: 10px;
+}
+
+[class*="row"]
+{
+    border: 2px solid red;
+    border-radius: 6px;
+    line-height: 10px;
+}*/
+
+.ligne1{
+    height: 70vh;
+}
+
+.ligne2{
+    height: 30vh;
+}
+
+.bg01{
+    background-image: url("https://wallup.net/wp-content/uploads/2015/12/103109-Star_Wars_Episode_VI_-_The_Return_of_the_Jedi-Star_Wars.jpg");
+    height: 100vh;
+}
+
+.pt-6{
+    padding-top: 2rem;
+}
+
+
+.imgSeize{
+    height: 50vh;
+    width: auto;
+}
+
+.frontSeizeCard{
+    font-size: 0.9rem;
+}
+
+
+/* Fin de Feuille de style Matches */
+
+/* CSS Page Credit */
+
+.credit-background {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    overflow: hidden;
+}
+
+.fade {
+    position: relative;
+    width: 100%;
+    min-height: 60vh;
+    top: -25px;
+    background-image: linear-gradient(0deg, transparent, black 75%);
+    z-index: 1;
+}
+
+.star-wars {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    height: 800px;
+    color: #feda4a;
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 500%;
+    font-weight: 600;
+    letter-spacing: 6px;
+    line-height: 150%;
+    perspective: 400px;
+    text-align: justify;
+}
+
+.crawl {
+    position: relative;
+    top: 99999px;
+    transform-origin: 50% 100%;
+    animation: crawl 20s linear;
+}
+
+.crawl > .title {
+    font-size: 90%;
+    text-align: center;
+}
+
+.crawl > .title h1 {
+    margin: 0 0 100px;
+    text-transform: uppercase;
+}
+
+@keyframes crawl {
+    0% {
+        top: -100px;
+        transform: rotateX(20deg)  translateZ(0);
+    }
+    100% {
+        top: -6000px;
+        transform: rotateX(25deg) translateZ(-2500px);
+    }
+}
+/* Fin CSS Page Credit */
+
+/* Début de Feuille de style Choices */
+.choices-card {
+    background-color: rgb(150, 150, 150);
+    border-radius: 0.25rem;
+}
+.bg-grey-choices {
+    background-color: rgb(150, 150, 150);
+}
+
+.choices-modal{
+    background-color: beige;
+}
+
+.bg-choices{
+    background-image: url("https://images8.alphacoders.com/401/401478.jpg");
+}
+
+.choices-img-fluidmax{
+    width: auto;
+    max-height: 100%;
+}
+
+.no-border-choices {
+    border: none;
+}
+
+.border-bottom-choices {
+    border-bottom: 1px solid rgba(0,0,0,1);
+}
+
+/* Fin de Feuille de style Choices */
+
+/* CSS Page Soulmate */
+.soulmate{
+    background: url(http://longwallpapers.com/Desktop-Wallpaper/star-wars-wallpapers-full-hd-For-Desktop-Wallpaper.jpg) 50% 0 no-repeat fixed;
+    height: 100vh;
+    background-size: cover;
+}
+
+#go-away{
+    color: white;
+    text-shadow: #F00 0px 0px 6px, #F00 0px 0px 10px;
+    width: 1000px;
+    height: 200px;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+/* Fin CSS Page Soulmate */
+
+/* Début de Feuille de style Profile */
+body, html {
+    height: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.bg-img {
+    /* The image used */
+    /*background-image: url("https://www.w3schools.com/howto/img_nature.jpg");*/
+    background-image: url("https://i.pinimg.com/originals/ef/75/74/ef7574f2a0ebea8295aa5c27e5339867.jpg");
+
+
+    /* Control the height of the image */
+    min-height: 1000px;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Add styles to the form container */
+.FormDavid {
+    position: absolute;
+    left: 35%;
+    top:50%;
+    margin: 20px;
+    max-width: 600px;
+    padding: 16px;
+    background-color: white;
+    opacity: 0.9;
+    box-shadow: 10px 5px 5px dodgerblue;
+}
+
+.empireDavid{
+    font-weight: bold;
+}
+
+.ProfileButton{
+    font-size:2em;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Set a style for the submit button */
+.btn {
+    background-color: #65FF19;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.btn:hover {
+    opacity: 1;
+}
+
+
+input[type=text] {
+    width: 130px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+    width: 100%;
+}
+/* Fin de Feuille de style Profile */
+
