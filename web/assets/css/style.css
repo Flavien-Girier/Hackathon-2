@@ -5,6 +5,13 @@
     color: black;
     text-shadow: #FFFF00 1px 1px, #FFFF00 -1px 1px, #FFFF00 -1px -1px, #FFFF00 1px -1px;
 }
+.logo-end{
+    position: absolute;
+    margin-right: 10px;
+    right:0;
+    color: black;
+    text-shadow: #FFFF00 1px 1px, #FFFF00 -1px 1px, #FFFF00 -1px -1px, #FFFF00 1px -1px;
+}
 
 /* Fin CSS Header */
 
@@ -121,11 +128,11 @@ nav {
     font-family: Open Sans;
     color: white;
     position: fixed;
-    transform: translatex(-100%);
+    transform: translatex(-150%);
     transition: transform 0.2s ease;
     top: 260px;
     bottom: 0px;
-    padding-right: 16px;
+    padding-right: 10px;
     width: 250px;
     height: 220px;
 }
@@ -389,15 +396,11 @@ h2 {
 }*/
 
 .ligne1{
-    height: 70vh;
-}
-
-.ligne2{
-    height: 30vh;
+    height: 100vh;
 }
 
 .bg01{
-    background-image: url("https://wallup.net/wp-content/uploads/2015/12/103109-Star_Wars_Episode_VI_-_The_Return_of_the_Jedi-Star_Wars.jpg");
+    background: url("https://images.alphacoders.com/107/thumb-1920-107763.jpg");
     height: 100vh;
 }
 
@@ -407,12 +410,31 @@ h2 {
 
 
 .imgSeize{
-    height: 50vh;
     width: auto;
+}
+
+.borderCard{
+    border: 1px solid black;
 }
 
 .frontSeizeCard{
     font-size: 0.9rem;
+    font: bold;
+}
+
+.siezeCardMatch{
+
+}
+
+.chat{
+    height: 83vh;
+    border: 1px solid white;
+    background-color: rgba(255,255,255,0.5);
+    margin-top: 10px ;
+}
+
+.h5match{
+    font-family: 'Poller One', cursive;
 }
 
 
@@ -423,7 +445,7 @@ h2 {
 .credit-background {
     width: 100%;
     height: 100%;
-    background: #000;
+    background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/YWAdzU2/night-sky-005-a-star-field-twinkles-in-a-night-sky-loop_hf3owvebl_thumbnail-full01.png");
     overflow: hidden;
 }
 
@@ -455,7 +477,7 @@ h2 {
     position: relative;
     top: 99999px;
     transform-origin: 50% 100%;
-    animation: crawl 20s linear;
+    animation: crawl 40s linear;
 }
 
 .crawl > .title {
@@ -482,24 +504,16 @@ h2 {
 
 /* Début de Feuille de style Choices */
 .choices-card {
-    background-color: rgb(150, 150, 150);
-    border-radius: 0.25rem;
+    border-radius: 0.8rem;
 }
 .bg-grey-choices {
-    background-color: rgb(150, 150, 150);
-}
-
-.choices-modal{
-    background-color: beige;
+    background-color: rgba(150, 150, 150,0.5);
 }
 
 .bg-choices{
-    background-image: url("https://images8.alphacoders.com/401/401478.jpg");
-}
-
-.choices-img-fluidmax{
-    width: auto;
-    max-height: 100%;
+    background: url("https://images8.alphacoders.com/401/401478.jpg") no-repeat fixed;
+    min-height: 1000px;
+    background-size: 100% 100%;
 }
 
 .no-border-choices {
@@ -531,6 +545,12 @@ h2 {
     right: 0;
     margin: auto;
 }
+
+.wrapper{
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+}
 /* Fin CSS Page Soulmate */
 
 /* Début de Feuille de style Profile */
@@ -545,37 +565,41 @@ body, html {
 .bg-img {
     /* The image used */
     /*background-image: url("https://www.w3schools.com/howto/img_nature.jpg");*/
-    background-image: url("https://i.pinimg.com/originals/ef/75/74/ef7574f2a0ebea8295aa5c27e5339867.jpg");
+    background-image: url("https://images5.alphacoders.com/672/thumb-1920-672012.jpg");
 
 
     /* Control the height of the image */
-    min-height: 1000px;
+    height: 100vh;
+    width: 100vw;
 
     /* Center and scale the image nicely */
-    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 /* Add styles to the form container */
 .FormDavid {
-    position: absolute;
+    /*position: absolute;
     left: 35%;
-    top:50%;
-    margin: 20px;
+    top:50%;*/
+    margin: 50px;
     max-width: 600px;
-    padding: 16px;
-    background-color: white;
-    opacity: 0.9;
-    box-shadow: 10px 5px 5px dodgerblue;
+    padding: 50px;
+    /*background-color: white;*/
+    background-color: rgba(150, 150, 150,0.8);
+    opacity: 1;
+    box-shadow: 1px 1px 30px rgba(255, 255, 255, 255);
+    border-radius: 10% / 50%;
+    color:white;
+
+}
+.SubtitleForbidden{
+    color:black;
+    font-weight: bold;
 }
 
 .empireDavid{
     font-weight: bold;
-}
-
-.ProfileButton{
-    font-size:2em;
 }
 
 /* Full-width input fields */
@@ -593,17 +617,18 @@ input[type=text]:focus, input[type=password]:focus {
 }
 
 /* Set a style for the submit button */
-.btn {
-    background-color: #65FF19;
+.ProfileButton {
+    font-size: 2em;
     color: white;
     padding: 16px 20px;
     border: none;
     cursor: pointer;
     width: 100%;
     opacity: 0.9;
+    margin-top:20px;
 }
 
-.btn:hover {
+.ProfileButton:hover {
     opacity: 1;
 }
 
@@ -611,7 +636,7 @@ input[type=text]:focus, input[type=password]:focus {
 input[type=text] {
     width: 130px;
     -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
+    transition: width 0.7s ease-in-out;
 }
 
 /* When the input field gets focus, change its width to 100% */
@@ -619,4 +644,65 @@ input[type=text]:focus {
     width: 100%;
 }
 /* Fin de Feuille de style Profile */
+
+.ButtonBackground{
+    background-color: #008000;
+
+}
+
+/* forbidden */
+.input-hidden {
+    position: absolute;
+    left: -9999px;
+}
+
+/* Stuff after this is only to make things more pretty */
+input[type=radio] + label>img {
+    border: none;
+    width: 150px;
+    height: 150px;
+    transition: 500ms all;
+}
+
+input[type=radio]:checked + label>img {
+    transform:
+            rotateZ(-20deg)
+            rotateX(20deg);
+}
+
+.gif{
+    display: block;
+    margin-top: 50px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 800px;
+    height: 600px;
+}
+.gif2{
+    display: none;
+    margin-top: 50px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 400px;
+    height: 300px;
+    border-radius: 15px;
+}
+
+
+.tagline{
+    font-size: 1.5em;
+}
+
+.credit-title{
+    font-size: 150px;
+    text-decoration: bold;
+}
+
+.reponse-d{
+    background-color: black;
+    background: url("https://cms-assets.tutsplus.com/uploads/users/30/posts/21904/image/404.jpg") no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
 

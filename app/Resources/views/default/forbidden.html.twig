@@ -3,55 +3,59 @@
 {% block header %}
 
     <header>
-        <h1 class="logo-dare">DARE !</h1>
+        <a href="/"><h1 class="logo-dare">DARE!</h1></a>
     </header>
 
 {% endblock %}
 
 {% block body %}
-
-
     <div class="container-fluid">
-        <div class="bg-img">
-            <form action="" method="POST">
-                <div class="container FormDavid">
-                    <h1>Wan't to meet the other side ?</h1>
-                    <h4 class="text-secondary font-italic">Fill out the following form</h4>
+        <div class="row bg-img">
+            <div class="d-flex justify-content-center container">
+                <form action="" method="POST">
+                    <div class="container FormDavid">
+                        <h1 class="text-center">Want to meet the other side ?</h1>
+                        <h4 class=" font-italic SubtitleForbidden">Fill out the following form</h4>
 
-                    <div class>
-                        <label for="name"><b>Enter your name</b></label>
-                        <input type="text" placeholder="Enter your name" name="name" required>
-                    </div>
-
-                    <div class>
-                        <label for="name"><b>Select specie you wan't to meet</b></label>
-                        <select name="Style">
-                            <option value="Droid">Droid</option>
-                            <option value="Human">Human</option>
-                            <option value="autre">Other</option>
-                        </select>
-                    </div>
-
-                    <div class>
-                        <p class="empireDavid mb-2 mt-4">What side are your looking for?</p>
-                        <input type="radio" id="contactChoice1"
-                               name="affiliations" value="Empire">
-                        <label for="contactChoice1">Empire</label>
-
-                        <input type="radio" id="contactChoice2"
-                               name="affiliations" value="Republic">
-                        <label for="contactChoice2">Republic</label>
-
-                    </div>
-                    <div>
-
-                        <div>
-
+                        <div class="row content-justify-center">
+                            <p class="empireDavid mb-2 mt-4 d-block col-12">On what side are you?</p>
                         </div>
-
-                        <button type="submit" class="btn ProfileButton">Match now </button>
-                    </div>
-            </form>
+                        <div class="row content-justify-center">
+                            <div class="col-5">
+                                <input
+                                        type="radio" name="affiliations"
+                                        id="contactChoice1" class="input-hidden"
+                                        value="Republic" />
+                                <label for="contactChoice1">
+                                    <img
+                                            src="{{ asset('assets/image/Empire_logo.svg.png') }}"
+                                            alt="contactChoice1" />
+                                </label>
+                            </div>
+                            <div class="col-5">
+                                <input
+                                        type="radio" name="affiliations"
+                                        id="contactChoice2" class="input-hidden"
+                                        value="Empire" />
+                                <label for="contactChoice2">
+                                    <img
+                                            src="{{ asset('assets/image/Rebel_Alliance_logo.svg.png') }}"
+                                            alt="contactChoice2" />
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row align-text-center">
+                            <label class="col-4 mt-3" for="height"><b>Select your height</b></label>
+                            <input class="col-8" type="text" id="height" name="height" value="">
+                        </div>
+                        <div class="row align-text-center">
+                            <label class="col-4 mt-3" for="mass"><b>Select your mass</b></label>
+                            <input class="col-8" type="text" id="mass" name="mass" value="">
+                        </div>
+                    <div>
+                </form>
+            </div>
+            <button type="submit" class="btn ProfileButton ButtonBackground">Match now </button>
         </div>
     </div>
 

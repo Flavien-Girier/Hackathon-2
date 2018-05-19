@@ -3,7 +3,7 @@
 {% block header %}
 
     <header>
-        <h1 class="logo-dare">DARE !</h1>
+        <a href="/"><h1 class="logo-dare">DARE!</h1></a>
     </header>
 
 {% endblock %}
@@ -12,45 +12,66 @@
 
     <div class="container-fluid">
         <div class="bg-img">
-            <form action="/action_page.php">
-                <div class="container FormDavid">
-                    <h1>Wan't to meet another specie ?</h1>
-                    <h4 class="text-secondary font-italic">Fill out the following form</h4>
+            <div class="d-flex justify-content-center container">
+                <form action="" method="post">
+                    <div class="container FormDavid">
+                        <h1 class="text-center ">Want to meet someone within the same specie?</h1>
+                        <h4 class="font-italic SubtitleForbidden">Fill out the following form</h4>
 
-                    <div class>
-                        <label for="name"><b>Enter your name</b></label>
-                        <input type="text" placeholder="Enter your name" name="name" required>
-                    </div>
-
-                    <div class>
-                        <label for="name"><b>Select specie you wan't to meet</b></label>
-                        <select name="Style">
-                            <option value="Droid">Droid</option>
-                            <option value="Human">Human</option>
-                            <option value="autre">Other</option>
-                        </select>
-                    </div>
-
-                    <div class>
-                        <p class="empireDavid mb-2 mt-4">What side are your looking for ?</p>
-                        <input type="radio" id="contactChoice1"
-                               name="contact" value="empire">
-                        <label for="contactChoice1">Empire</label>
-
-                        <input type="radio" id="contactChoice2"
-                               name="contact" value="republique">
-                        <label for="contactChoice2">Republic</label>
-
-                    </div>
-                    <div>
-
-                        <div>
-
+                        <div class="row align-text-center">
+                            <label for="species" class="col-5 mt-3"><b>Select your specie</b></label>
+                            <select name="species" class="col-7">
+                                <option value=""></option>
+                                {% for specie in species %}
+                                    <option value="{{ specie }}">{{ specie }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
 
-                        <button type="submit" class="btn ProfileButton">Match now </button>
-                    </div>
-            </form>
+                        <div class="row content-justify-center">
+                            <p class="empireDavid mb-2 mt-4 d-block col-12">What is your gender?</p>
+                        </div>
+                        <div class="row content-justify-center">
+                            <div class="col-5">
+                                <input
+                                        type="radio" name="gender"
+                                        id="contactChoice1" class="input-hidden"
+                                        value="female" />
+                                <label for="contactChoice1">
+                                    <img
+                                            src="{{ asset('assets/image/500px-Male_Icon.svg.png') }}"
+                                            alt="contactChoice1" />
+                                </label>
+                            </div>
+                            <div class="col-5">
+                                <input
+                                        type="radio" name="gender"
+                                        id="contactChoice2" class="input-hidden"
+                                        value="male" />
+                                <label for="contactChoice2">
+                                    <img
+                                            src="{{ asset('assets/image/500px-Female_Icon.svg.png') }}"
+                                            alt="contactChoice2" />
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="row align-text-center">
+                            <label class="col-5 mt-3" for="lastHomeworld"><b>Select a homeworld</b></label>
+                            <select class="col-7" name="lastHomeworld">
+                                <option value=""></option>
+                                {% for homeworld in homeworlds %}
+                                    <option value="{{ homeworld }}">{{ homeworld }}</option>
+                                {% endfor %}
+
+                            </select>
+                        </div>
+
+                        <div>
+                            <button type="submit" class="btn ProfileButton ButtonBackground">Match now </button>
+                        </div>
+                </form>
+            </div>
         </div>
     </div>
 

@@ -27,9 +27,30 @@ class Characters
         $response = $client->request('GET', 'all.json');
         $body = $response->getBody();
         $assoc = true;
-        $this->characters = json_decode($body,$assoc);
+        $characters = json_decode($body,$assoc);
+        shuffle($characters);
 
-        return $this->characters;
+        foreach ($characters as $key => $character) {
+            if (!empty($characters[$key]['affiliations'])) {
+                if (is_array($characters[$key]['affiliations'])) {
+                    $characters[$key]['lastAffiliation'] = $characters[$key]['affiliations'][count($characters[$key]['affiliations'])-1];
+                } else {
+                    $characters[$key]['lastAffiliation'] = $characters[$key]['affiliations'];
+                }
+            }
+        }
+        
+        foreach ($characters as $key => $character) {
+            if (!empty($characters[$key]['homeworld'])) {
+                if (is_array($characters[$key]['homeworld'])) {
+                    $characters[$key]['lastHomeworld'] = strtolower($characters[$key]['homeworld'][count($characters[$key]['homeworld'])-1]);
+                } else {
+                    $characters[$key]['lastHomeworld'] = strtolower($characters[$key]['homeworld']);
+                }
+            }
+        }
+        
+        return $characters;
     }
 
     public function getOneByID($id) : array
@@ -83,7 +104,38 @@ class Characters
 
     /**
      * return all possible characters that have a specific string value
-     *      for a specified first level paramater
+     *      for a specified first level parameter
+     *
+     * @param array $characters
+     * @param string $parameter
+     * @param string $value
+     *
+     * @return array
+     */
+    public function getExtractByParameterAndExactValue(array $characters, string $parameter, string $value) : array
+    {
+        $newCharacters = [];
+        foreach ($characters as $id => $character) {
+            if (isset($character[$parameter])) {
+                if (is_array($character[$parameter])) {
+                    for ($i = count($character[$parameter]) - 1; $i >= 0; $i--) {
+                        if ($character[$parameter][$i] == $value) {
+                            $newCharacters[] = $character;
+                        }
+                    }
+                } else {
+                    if ($character[$parameter] == $value) {
+                        $newCharacters[] = $character;
+                    }
+                }
+            }
+        }
+        return $newCharacters;
+    }
+
+    /**
+     * return all possible characters that have a specific string value
+     *      for a specified first level parameter
      *
      * @param array $characters
      * @param string $parameter
@@ -177,43 +229,72 @@ class Characters
     }
 
     /**
-     * return all possible characters that have at least one of specifics string values
-     *      for at least one of the specified first level paramaters
+     * return all possible characters that have a specific string value
+     *      for a specified first level paramater
      *
      * @param array $characters
-     * @param mixed $parameters
-     * @param mixed $values
+     * @param string $parameter
      *
      * @return array
      */
-    public function getExtractByParametersAndValues(array $characters, $parameters, $values) : array
+    public function getValuesByParameter(array $characters, string $parameter) : array
     {
-        $charactersManager = new Characters();
-        $newCharacters = $characters;
-        if (is_array($parameters)) {
-            foreach ($parameters as $parameter) {
-                if (is_array($values)) {
-                    foreach ($values as $value) {
-                        $tempCharacters = $charactersManager->getExtractByParameterAndValue($newCharacters, $parameter, $value);
-                        $newCharacters = $charactersManager->setExtractByDuplicates($newCharacters, $tempCharacters);
+        $values = [];
+        foreach ($characters as $id => $character) {
+            if (isset($character[$parameter])) {
+                if (is_array($character[$parameter])) {
+                    for ($i = count($character[$parameter]) - 1; $i >= 0; $i--) {
+                        if (!in_array($character[$parameter][$i],$values)) {
+                            $values[] = $character[$parameter][$i];
+                        }
                     }
                 } else {
-                    $tempCharacters = $charactersManager->getExtractByParameterAndValue($newCharacters, $parameter, $values);
-                    $newCharacters = $charactersManager->setExtractByDuplicates($newCharacters, $tempCharacters);
+                    if (!in_array($character[$parameter],$values)) {
+                        $values[] = $character[$parameter];
+                    }
                 }
-            }
-        } else {
-            if (is_array($values)) {
-                foreach ($values as $value) {
-                    $tempCharacters = $charactersManager->getExtractByParameterAndValue($newCharacters, $parameters, $value);
-                    $newCharacters = $charactersManager->setExtractByDuplicates($newCharacters, $tempCharacters);
-                }
-            } else {
-                $tempCharacters = $charactersManager->getExtractByParameterAndValue($newCharacters, $parameters, $values);
-                $newCharacters = $charactersManager->setExtractByDuplicates($newCharacters, $tempCharacters);
             }
         }
+        sort($values);
+        return $values;
 
+    }
+
+    /**
+     * select characters with a very different height
+     *
+     * @param array $characters
+     * @param float $height
+     *
+     * @return array
+     */
+    public function getAllDifferentByHeight(array $characters, float $height) : array
+    {
+        $newCharacters = [];
+        foreach ($characters as $character) {
+            if (!empty($character['height']) && ( ($height / $character['height']) > 1.11 || ($height / $character['height']) < 0.9 )) {
+                $newCharacters[] = $character;
+            }
+        }
+        return $newCharacters;
+    }
+
+    /**
+     * select characters with a very different mass
+     *
+     * @param array $characters
+     * @param float $mass
+     *
+     * @return array
+     */
+    public function getAllDifferentByMass(array $characters, float $mass) : array
+    {
+        $newCharacters = [];
+        foreach ($characters as $character) {
+            if (!empty($character['mass']) && ( ($mass / $character['mass']) > 3 || ($mass / $character['mass']) < 0.33 )) {
+                $newCharacters[] = $character;
+            }
+        }
         return $newCharacters;
     }
 

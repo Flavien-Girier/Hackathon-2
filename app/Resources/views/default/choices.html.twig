@@ -3,7 +3,7 @@
 {% block header %}
 
     <header>
-        <h1 class="logo-dare">DARE !</h1>
+        <a href="/"><h1 class="logo-dare">DARE!</h1></a>
     </header>
 
 {% endblock %}
@@ -12,73 +12,75 @@
 <div class="bg-choices text-light">
     <div class="container">
         <div class="section-header">
-            <h1 class="text-center">May the fuck be in you</h1>
+            <h1 class="text-center">Your panel of potentials dates</h1>
         </div>
     </div>
+    
+    <audio id="sound1" preload="auto">
+        <source src="http://www.thesoundarchive.com/starwars/R2D2-yeah.mp3" type="audio/mp3" />
+    </audio>
+    
     <div class="container">
         <div class="row justify-content-md-center">
             {% for character in characters %}
                 {% if character.name %}
-                <div class="col-md-5 col-sm-6 text-center choices-card p-0 m-3">
-                        <div class="card bg-grey-choices no-border-choices">
+                <div class="col-md-5 col-sm-6 text-center p-0 m-3">
+                        <div class="card bg-grey-choices no-border-choices choices-card">
                             <div class="card-header border-bottom-choices">
                                 <h5>{{ character.name }}</h5>
                             </div>
                             <div class="card-body d-inline-flex">
-                                <img class="card-img-top choices-img-fluidmax" src="{{ character.image }}" alt="Card image cap">
-                                <ul>
+                                <div class="col-md-6">
+                                <img class="card-img-top" src="{{ character.image }}" alt="Card image cap">
+                                </div>
+                                <div class="col-md-6">
+                                <ul class="text-left list-unstyled">
                                     <li>
-                                        <h4>Description</h4>
+                                        <h6><i class="swg swg-falcon-o swg-lg"></i> Gender: {{ character.gender }}</h6>
                                     </li>
                                     <li>
-                                        <h6>Gender: {{ character.gender }}</h6>
+                                        <h6><i class="swg swg-falcon-o swg-lg"></i> Specie: {{ character.species }}</h6>
                                     </li>
                                     <li>
-                                        <h6>Specie: {{ character.species }}</h6>
+                                        <h6><i class="swg swg-falcon-o swg-lg"></i> Eye color: {{ character.eyeColor }}</h6>
                                     </li>
+
+                                    {% if character.height is defined %}
                                     <li>
-                                        <h6>Eye color: {{ character.eyeColor }}</h6>
+                                        <h6><i class="swg swg-falcon-o swg-lg"></i> Height: {{ character.height }} m</h6>
                                     </li>
-                                    <ol class="p-0">
-                                        <a class="btn btn-primary" href=""><i class="fas fa-pencil-alt mr-2"></i>Choose</a>
-                                    </ol>
+                                    {% endif %}
+                                    {% if character.mass is defined %}
+                                    <li>
+                                        <h6><i class="swg swg-falcon-o swg-lg"></i> Mass: {{ character.mass }} Kg</h6>
+                                    </li>
+                                    {% endif %}
+                                    {% if character.hairColor is defined %}
+                                    <li>
+                                        <h6><i class="swg swg-falcon-o swg-lg"></i> Hair color: {{ character.hairColor }}</h6>
+                                    </li>
+                                    {% endif %}
+                                    {% if character.lastHomeworld is defined %}
+                                    <li>
+                                        <h6><i class="swg swg-falcon-o swg-lg"></i> Homeworld: {{ character.lastHomeworld }}</h6>
+                                    </li>
+                                    {% endif %}
+                                    {% if character.bornLocation is defined %}
+                                    <li>
+                                        <h6><i class="swg swg-falcon-o swg-lg"></i> Born location: {{ character.bornLocation }}</h6>
+                                    </li>
+                                    {% endif %}
+                                    {% if character.lastAffiliation is defined %}
+                                    <li>
+                                        <h6><i class="swg swg-falcon-o swg-lg"></i> Affiliations: {{ character.lastAffiliation }}</h6>
+                                    </li>
+                                    {% endif %}
+
+                                    <div>
+                                        <a class="btn btn-primary question" href="/matches/{{ character.id }}" onclick="document.getElementById('sound1').play();"><i class="fas fa-pencil-alt mr-2"></i>Choose</a>
+                                    </div>
                                 </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal fade" id="modal{{ character.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content choices-modal">
-                                <div class="modal-header">
-                                    <h2 class="modal-title" id="exampleModalLongTitle">{{ character.name }}</h2>
                                 </div>
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="col-md-6 align-items-center">
-                                            <img class="rounded" src="{{ character.image }}">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                         <h4 class="text-center h4-modalTitle">Description</h4>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                    <div class="col-6">
-                                            <h6 class="p-pedigree">Sexe</h6>
-                                            <h6 class="p-pedigree">Espèce</h6>
-                                            <h6 class="p-pedigree">Couleur des yeux</h6>
-                                        </div>
-                                        <div class="col-6">
-                                            <h6>{{ character.gender }}</h6>
-                                            <h6>{{ character.species }}</h6>
-                                            <h6>{{ character.eyeColor }}</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                 </div>
                             </div>
                         </div>
                     </div>
